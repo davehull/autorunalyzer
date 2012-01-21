@@ -9,7 +9,7 @@ and -f (create file hashes) options, as the script will depend on having them.
 The development plan, such as it is, is to parse the output of Microsoft
 Sysinternals Autoruns or Autorunsc in xml format. Give the user the option to
 limit analysis to those entries that don't have verified digital signatures,
-compare the hashes to a list of known good and known bad hashe, submit any 
+compare the hashes to a list of known good and known bad hashes, submit any 
 unknown hashes to VirusTotal.com and report any that are reported as malicious
 or that have not been seen by VirusTotal before.
 
