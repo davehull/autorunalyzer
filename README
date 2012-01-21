@@ -1,0 +1,30 @@
+Autorunalyzer version: vaporware
+
+This script is a work in progress and subject to frequent change. I'd create a
+private repository for it, but I haven't upgraded my github plan yet. :(
+
+The Autoruns output should be created with the -v (verify digital signatures)
+and -f (create file hashes) options, as the script will depend on having them.
+
+The development plan, such as it is, is to parse the output of Microsoft
+Sysinternals Autoruns or Autorunsc in xml format. Give the user the option to
+limit analysis to those entries that don't have verified digital signatures,
+compare the hashes to a list of known good and known bad hashe, submit any 
+unknown hashes to VirusTotal.com and report any that are reported as malicious
+or that have not been seen by VirusTotal before.
+
+The script will be written to rate limit submissions to VirusTotal at the
+public API rate of four hashes per minute, but an API key can be supplied
+in a configuration file for those with access to the private API. The rate
+can then be adjusted by editing the configuration file.
+
+My intention is for this to be a tool for use in incident detection/response.
+Some environments may choose to run Autoruns as a scheduled task and to process
+the results on a weekly basis. This may be useful for scaling up incident 
+detection on the cheap.
+
+Potential users should note that there are other mechanisms that attackers may
+use for maintaining persistence. DLL hijacking would be one way and more
+sophisticated attackers don't bother with persistence through software
+installed on victim systems, rather they maintain access via the use of stollen
+credentials for legitimate users.
