@@ -1,6 +1,12 @@
 #!/bin/bash
 # A working proof of concept, lacking many features
 
+# Remove old VirusTotal results
+files=$(ls *.html 2>/dev/null | wc -l)
+if [ "$files" != "0" ]; then
+    ls *.html | xargs rm -rf 
+fi
+
 # Gather all hashes for unsigned code from autoruns csv output file named aruns.csv
 grep -i "(Not Verified)" aruns.csv | awk -F, '{print $(NF-2)}' | sort | uniq > aruns_hashes
 
