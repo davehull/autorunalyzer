@@ -38,7 +38,7 @@ grep -if aruns_malware_hashes aruns.csv > aruns_malware
 grep -l "0 / " *.html | awk -F. '{print $1}' >> hashes_cleared
 
 # Check for results tnat are unknown to VT
-grep -li "not found" *.html | awk -F. '{print $1}' >> unknowns
+grep -li "not found" *.html | awk -F. '{print $1}' > unknowns
 
 # Pull unkown entries from aruns.csv
 grep -if unknowns aruns.csv > aruns_unknown
