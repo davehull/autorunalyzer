@@ -26,7 +26,7 @@ fi
 # Search VirusTotal for reports on remaining hashes
 echo "[+] $(wc -l vtsubmissions) hashes to check with Virus Total"
 sleep 2
-for i in $(cat vtsubmissions); do wget -O $i.html --no-check-certificate https://www.virustotal.com/latest-scan/$i; sleep 15; done
+for i in $(cat vtsubmissions); do wget --header= -O $i.html --no-check-certificate https://www.virustotal.com/latest-scan/$i; sleep 15; done
 
 # Check results for malware
 grep -l "[1-9][0-9]* / " *.html | awk -F. '{print $1}' | tee -a aruns_malware_hashes >> hashes_evil
